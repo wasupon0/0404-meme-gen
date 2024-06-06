@@ -2,13 +2,20 @@ import { useState } from "react";
 import memeData from "../memeData";
 
 function Meme() {
-  const [memeUrl, setMemeUrl] = useState("https://i.imgflip.com/30b1gx.jpg");
-  const memeArray = memeData.data.memes;
-  const { name: memeName } = memeArray;
+  const [memeObj, setMemeObj] = useState({
+    topText: "topText",
+    bottomText: "bottomText",
+    url: "https://i.imgflip.com/30b1gx.jpg",
+    name: "Drake Hotline Bling",
+  });
 
   function getMemeImage(e) {
     e.preventDefault();
-    setMemeUrl(memeArray[Math.floor(Math.random() * memeArray.length)].url);
+    const memeArray = memeData.data.memes;
+    const randomIndex = Math.floor(Math.random() * memeArray.length);
+    const memeName = memeArray[randomIndex].name;
+    const memeUrl = memeArray[randomIndex].url;
+    setMemeObj((prev) => ({ ...prev, url: memeUrl, name: memeName }));
   }
 
   return (
@@ -28,7 +35,11 @@ function Meme() {
           Get a new meme image 🖼️
         </button>
       </form>
-      <img className="meme--img" src={memeUrl} alt={`meme - ${memeName}`} />
+      <img
+        className="meme--img"
+        src={memeObj.url}
+        alt={`meme - ${memeObj.name}`}
+      />
     </main>
   );
 }
