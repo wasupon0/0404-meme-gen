@@ -2,7 +2,7 @@ import { useState } from "react";
 import memeData from "../memeData";
 
 function Meme() {
-  const [memeUrl, setMemeUrl] = useState("");
+  const [memeUrl, setMemeUrl] = useState("https://i.imgflip.com/30b1gx.jpg");
   const memeArray = memeData.data.memes;
   const { name: memeName } = memeArray;
 
