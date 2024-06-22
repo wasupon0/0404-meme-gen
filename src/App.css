@@ -105,6 +105,7 @@ main {
 .meme--img {
   border: 2px solid purple;
   border-radius: 3px;
-  max-width: 500px;
+  max-height: 600px;
+  max-width: 600px;
   object-fit: cover;
 }
