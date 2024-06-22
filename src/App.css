@@ -41,7 +41,7 @@ input {
   width: 100%;
 }
 
-.meme--container {
+.form {
   display: grid;
   gap: 30px;
   grid-template: 40px 40px / 1fr 1fr;
@@ -66,17 +66,45 @@ input {
   transform: scale(0.99);
 }
 
-.meme--img {
-  align-items: center;
-  border: 2px solid purple;
-  max-height: 500px;
-  max-width: 500px;
-  object-fit: cover;
-  width: 60%;
-}
-
 main {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+.meme {
+  position: relative;
+}
+
+.top {
+  top: 0.1rem;
+}
+
+.bottom {
+  bottom: 0.1rem;
+}
+
+.meme--text {
+  color: white;
+  font-family: impact, sans-serif;
+  font-size: 3em;
+  left: 50%;
+  letter-spacing: 1px;
+  margin: 15px 0;
+  padding: 0 5px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  width: 80%;
+}
+
+.meme--img {
+  border: 2px solid purple;
+  border-radius: 3px;
+  max-width: 500px;
+  object-fit: cover;
 }
