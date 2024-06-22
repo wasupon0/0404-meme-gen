@@ -1,5 +1,4 @@
-import { useState } from "react";
-import memeData from "../memeData";
+import { useEffect, useState } from "react";
 
 function Meme() {
   const [memeObj, setMemeObj] = useState({
@@ -9,12 +8,22 @@ function Meme() {
     name: "Drake Hotline Bling",
   });
 
+  const [allMemes, setAllMemes] = useState([]);
+
+  useEffect(() => {
+    async function getMemes() {
+      const res = await fetch("https://api.imgflip.com/get_memes");
+      const memeData = await res.json();
+      setAllMemes(memeData.data.memes);
+    }
+    getMemes();
+  }, []);
+
   function getMemeImage(e) {
     e.preventDefault();
-    const memeArray = memeData.data.memes;
-    const randomIndex = Math.floor(Math.random() * memeArray.length);
-    const memeName = memeArray[randomIndex].name;
-    const memeUrl = memeArray[randomIndex].url;
+    const randomIndex = Math.floor(Math.random() * allMemes.length);
+    const memeName = allMemes[randomIndex].name;
+    const memeUrl = allMemes[randomIndex].url;
     setMemeObj((prev) => ({
       ...prev,
       url: memeUrl,
